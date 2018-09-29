@@ -1,0 +1,10 @@
+---
+shellinabox::certdir: '/var/lib/shellinabox'
+shellinabox::disable_ssl_menu: true
+shellinabox::group: 'shellinabox'
+shellinabox::package_name: 'shellinabox'
+shellinabox::port: 4200
+shellinabox::service_name: 'shellinaboxd'
+shellinabox::services:
+  /: 'LOGIN'
+shellinabox::user: 'shellinabox'
