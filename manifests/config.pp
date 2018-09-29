@@ -8,7 +8,7 @@ class shellinabox::config {
 
   case $facts['os']['family'] {
     'RedHat': {
-      $opts = join(delete_undef_values([
+      $opts = join([
         $::shellinabox::disable_ssl ? {
           false   => undef,
           default => '--disable-ssl',
@@ -27,7 +27,7 @@ class shellinabox::config {
             "--service '${x[0]}:${join(Array($x[1], true), ':')}'"
           }, ' ')
         },
-      ]), ' ')
+      ].filter |$x| { $x =~ NotUndef }, ' ')
 
       file { '/etc/sysconfig/shellinaboxd':
         ensure  => file,
